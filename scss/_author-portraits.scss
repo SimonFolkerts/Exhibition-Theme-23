@@ -1,0 +1,45 @@
+$size: 100px;
+$gap: 0px;
+$bottom-margin: $gap - $size * 0.15;
+$float: 2 * $size + 2 * $gap + 2* $bottom-margin;
+
+
+.author-portraits-container {
+  display: flex;
+}
+
+.author-cards {
+  font-size: 0;
+  padding-bottom: 2 * $gap;
+
+  &::before {
+    content: "";
+    width: $size / 2 + $gap;
+    float: left;
+    height: 120%;
+    shape-outside: repeating-linear-gradient(#0000 0 $float - 3px, #000 0 $float);
+  }
+}
+
+.author-card {
+  display: inline-block;
+  overflow: hidden;
+
+  width: $size;
+  height: $size;
+  margin: $gap;
+  margin-bottom: $bottom-margin;
+
+  &__portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+
+    border: 4px solid transparent;
+  }
+
+  &--active &__portrait {
+    border: 4px solid #fff;
+  }
+}

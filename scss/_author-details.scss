@@ -1,0 +1,33 @@
+$portraits-bg: rgb(143, 82, 189);
+$details-bg : rgb(189, 84, 84);
+
+.author {
+
+  &-portraits,
+  &-details {
+    flex: 1 1 100%;
+  }
+
+  &-portraits {
+    display: flex;
+    align-items: center;
+    background-color: $portraits-bg;
+  }
+
+  &-details {
+    background-color: $details-bg;
+    position: relative;
+
+    &__container {
+      visibility: hidden;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      &--active {
+        visibility: visible;
+      }
+    }
+  }
+}
