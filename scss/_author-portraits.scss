@@ -1,23 +1,49 @@
-$size: 100px;
-$gap: 0px;
+$size: 8em;
+$gap: 1em;
 $bottom-margin: $gap - $size * 0.15;
-$float: 2 * $size + 2 * $gap + 2* $bottom-margin;
+$float: (
+  2 * $size) + (2 * $gap) + (2 * $bottom-margin
+);
 
+.banner {
+  @media screen and (min-width: 1000px) {
+    position: absolute;
+    top: 0;
+  }
 
-.author-portraits-container {
+  margin-top: 2em;
+
+  img {
+    width: 15em;
+    align-self: center;
+  }
+
+}
+
+.author-portraits {
+  background-color: #1c1c1c;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &-container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+  }
 }
 
 .author-cards {
-  font-size: 0;
+  font-size: 1vw;
   padding-bottom: 2 * $gap;
 
   &::before {
     content: "";
-    width: $size / 2 + $gap;
+    width: calc($size / 2 + $gap);
     float: left;
     height: 120%;
-    shape-outside: repeating-linear-gradient(#0000 0 $float - 3px, #000 0 $float);
+    shape-outside: repeating-linear-gradient(#0000 0 $float - 0.4em, #000 0 $float);
   }
 }
 
@@ -30,16 +56,83 @@ $float: 2 * $size + 2 * $gap + 2* $bottom-margin;
   margin: $gap;
   margin-bottom: $bottom-margin;
 
+
   &__portrait {
+    filter: saturate(0);
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+    object-position: 50% 10%;
 
-    border: 4px solid transparent;
+    border: 0.5em solid transparent;
   }
 
   &--active &__portrait {
-    border: 4px solid #fff;
+    border: 0.5em solid white;
+    filter: saturate(1);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+
+  $size: 18em;
+  $gap: 1em;
+  $bottom-margin: $gap - $size * 0.15;
+  $float: (2 * $size)+(2 * $gap)+(2 * $bottom-margin);
+
+  .author-portraits-container {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    padding: 3em 0;
+
+    @media screen and (max-width: 1000px) {
+      width: 80%;
+    }
+  }
+
+  .author-cards {
+    font-size: 1vw;
+    padding-bottom: 2 * $gap;
+
+    &::before {
+      content: "";
+      width: calc($size / 2 + $gap);
+      float: left;
+      height: 120%;
+      shape-outside: repeating-linear-gradient(#0000 0 $float - 0.2em, #000 0 $float);
+    }
+  }
+
+  .author-card {
+    display: inline-block;
+    overflow: hidden;
+
+    width: $size;
+    height: $size;
+    margin: $gap;
+    margin-bottom: $bottom-margin;
+
+
+    @media screen and (max-width: 1000px) {
+      width: $size;
+    }
+
+    &__portrait {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 10%;
+      border-radius: 50%;
+
+      border: 0.5em solid transparent;
+      filter: saturate(0);
+    }
+
+    &--active &__portrait {
+      border: 1em solid white;
+      filter: saturate(1);
+    }
   }
 }

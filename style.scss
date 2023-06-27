@@ -9,6 +9,8 @@ Author: Simon
 
 @use 'scss/author-portraits';
 @use 'scss/author-details';
+@use 'scss/author-page';
+@use 'scss/project-page';
 
 #wpadminbar {
   position: static;
@@ -18,12 +20,20 @@ Author: Simon
   box-sizing: border-box;
 }
 
+html {
+  font-family: sans-serif;
+
+  @media screen and (min-width: 1000px) {
+    overflow: hidden;
+  }
+
+}
+
 body {
   margin: 0;
   display: flex;
   flex-direction: column;
   height: 100dvh;
-
 }
 
 main {
@@ -33,11 +43,58 @@ main {
 
 .home-content {
   display: flex;
-  position: absolute;
-  top: 0;
-  bottom: 0;
+  min-height: 100%;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1000px) {
     flex-direction: column;
+  }
+}
+
+.page-header {
+  padding: 2em;
+  background-color: #1c1c1c;
+  display: flex;
+  align-items: center;
+  gap: 4em;
+
+
+  img {
+    width: 15em;
+  }
+}
+
+.back {
+
+  &-graduate,
+  &-home {
+    color: white;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    border-radius: 4em;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  &-home {
+    background-color: #f087f8;
+  }
+
+  &-graduate {
+    background-color: #706bfa;
+  }
+}
+
+.author {
+
+  &-details,
+  &-portraits {
+    flex-basis: 50%;
+
+    @media screen and (max-width: 1000px) {
+      width: 100%;
+    }
   }
 }

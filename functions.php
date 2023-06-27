@@ -68,11 +68,12 @@ function add_project_post_type()
       'remove_featured_image' => __('Remove Project Featured Image'),
       'use_featured_image' => __('Use as Project Featured Image'),
     ),
+    'show_in_rest' => true,
     'public' => true,
     'has_archive' => true,
     'rewrite' => array('slug' => 'projects'),
     'menu_icon' => 'dashicons-layout',
-    'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'revisions', 'page-attributes'),
+    'supports' => array('title', 'editor', 'custom-fields', 'revisions'),
     'menu_position' => 4,
   ));
 }
